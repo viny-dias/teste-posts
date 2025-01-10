@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
+import { PostFormProps } from '../types/PostFormProps';
 
-const PostForm = ({ onSubmit, editingPost, setEditingPost }) => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+const PostForm = ({ onSubmit, onEdit, editingPost, setEditingPost }: PostFormProps) => {
+  const [title, setTitle] = useState<string>('');
+  const [content, setContent] = useState<string>('');
 
   useEffect(() => {
     if (editingPost) {
       setTitle(editingPost.title);
-      setBody(editingPost.body);
+      setContent(editingPost.content);
     } else {
       setTitle('');
-      setBody('');
+      setContent('');
     }
   }, [editingPost]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (editingPost) {
-      onSubmit(editingPost.id, { title, body });
+    if (editingPost && onEdit) {
+        onEdit(title, content, editingPost.id);
     } else {
-      onSubmit({ title, body });
+        onSubmit(title, content);
     }
   };
 
@@ -39,8 +40,8 @@ const PostForm = ({ onSubmit, editingPost, setEditingPost }) => {
         <label className="block text-gray-700 font-bold mb-2">Conteúdo</label>
         <textarea
           placeholder="Conteúdo"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>

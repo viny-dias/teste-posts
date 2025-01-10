@@ -1,8 +1,10 @@
-const PostItem = ({ post, onEdit, onDelete }) => {
+import { PostItemProps } from "../types/PostItemProps";
+
+const PostItem = ({ post, onEdit, onDelete }: PostItemProps) => {
   return (
     <div className="p-4 bg-gray-50 border rounded-lg shadow-sm">
       <h2 className="text-xl font-bold text-gray-800">{post.title}</h2>
-      <p className="text-gray-600">{post.body}</p>
+      <p className="text-gray-600">{post.content}</p>
       <div className="mt-4 flex space-x-2">
         <button
           onClick={() => onEdit(post)}
