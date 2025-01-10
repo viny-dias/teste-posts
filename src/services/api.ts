@@ -1,9 +1,9 @@
-import axios from 'axios';
+const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-});
-
-// @todo Implementar as funções getPosts, createPost, updatePost e deletePost.
-
-export default api;
+export const api = {
+  async getPosts() {
+    const response = await fetch(`${API_BASE_URL}/posts?_limit=10`);
+    if (!response.ok) throw new Error('Erro ao buscar posts');
+    return response.json();
+  },
+};
