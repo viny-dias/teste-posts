@@ -1,4 +1,3 @@
-// src/hooks/usePosts.ts
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '../services/api';
 import { Post } from '../types/Post';
