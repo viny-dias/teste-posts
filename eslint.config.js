@@ -7,7 +7,7 @@ import typescript from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', "jest.config.js"] },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {

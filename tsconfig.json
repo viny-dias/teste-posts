@@ -18,8 +18,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ]
   },
-  "include": ["src", "vite.config.ts"], // Adicionado vite.config.ts aqui
+  "include": ["src", "vite.config.ts", "src/setup.ts"], // Adicionado vite.config.ts aqui
   "references": [{ "path": "./tsconfig.node.json" }]
 }
